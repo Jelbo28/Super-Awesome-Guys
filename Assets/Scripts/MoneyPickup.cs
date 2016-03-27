@@ -1,47 +1,64 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class MoneyPickup : MonoBehaviour 
 {
-    int timesUsed = 0;
-
+    //string playerMoney;
 	public void OnTriggerEnter2D (Collider2D other)
 	{
-        if (timesUsed < 1)
+        if (other.gameObject.tag == "Player 1")
         {
-            if (other.gameObject.tag == "Player 1")
+            //playerMoney = "playerOneMoney";
+            //CheckMoney();
+            switch (this.tag)
             {
-                timesUsed++;
-                CheckMoney();
-                GM.instance.PickupCoinOne();
-                //Debug.Log("Coin");
-                Destroy(gameObject);
-            }
-            else if (other.gameObject.tag == "Player 2")
-            {
-                timesUsed++;
-                CheckMoney();
-                GM.instance.PickupCoinTwo();
-                //Debug.Log("Coin");
-                Destroy(gameObject);
+                case "Green":
+                    GM.instance.playerOneMoney += 0.01f;
+                    break;
+                case "Blue":
+                    GM.instance.playerOneMoney += 0.05f;
+                    break;
+                case "Red":
+                    GM.instance.playerOneMoney += 0.2f;
+                    break;
             }
         }
-	}
+        else if (other.gameObject.tag == "Player 2")
+        {
+            //playerMoney = "playerTwoMoney";
+            //CheckMoney();
+            switch (this.tag)
+            {
+                case "Green":
+                    GM.instance.playerTwoMoney += 0.01f;
+                    break;
+                case "Blue":
+                    GM.instance.playerTwoMoney += 0.05f;
+                    break;
+                case "Red":
+                    GM.instance.playerTwoMoney += 0.2f;
+                    break;
+            }
+        }
+        GM.instance.PickupCoin();
+        //Debug.Log("Coin");
+        Destroy(gameObject);
+    }
 
+    /*
     public void CheckMoney()
     {
-        int reward = 0;
         switch (this.tag)
         {
             case "Green":
-                reward = 1;
+                GM.instance. (playerMoney) += 1;
                 break;
             case "Blue":
-                reward = 5;
+                GM.instance. += 5;
                 break;
             case "Red":
-                reward = 20;
+                GM.instance. += 20;
                 break;
         }
     }
+    */
 }

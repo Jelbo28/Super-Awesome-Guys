@@ -12,9 +12,9 @@ public class GM : MonoBehaviour
     [SerializeField]
 	int playerTwoLives = 3;
     [SerializeField]
-	float playerOneMoney = 0.00f;
+	public float playerOneMoney = 0.00f;
     [SerializeField]
-	float playerTwoMoney = 0.00f;
+	public float playerTwoMoney = 0.00f;
 
 	public static GM instance = null;
     public GameObject ScreenBorder;
@@ -126,7 +126,7 @@ public class GM : MonoBehaviour
 		CheckGameover ();
 	}
 	
-	public void PickupCoinOne()
+	public void PickupCoin()
 	{
         coinPickup.Play();
         /*
@@ -134,23 +134,10 @@ public class GM : MonoBehaviour
         MoneyPickup gemScript = gem.GetComponent<MoneyPickup>();
         playerOneMoney = playerOneMoney + gemScript.;
         */
-        playerOneMoney++;
-        moneyTextOne.text = moneyTextOne.text + (playerOneMoney/100);
-	}
-
-	public void PickupCoinTwo()
-	{
-        coinPickup.Play();
-        /*
-        GameObject gem = GameObject.Find("gemGreen");
-        MoneyPickup gemScript = gem.GetComponent<MoneyPickup> ();
-        playerTwoMoney = playerTwoMoney + gemScript.money;
-        */
-        playerTwoMoney++;
-		moneyTextTwo.text = moneyTextTwo.text + (playerTwoMoney/100);
-	}
-
-   
+        Debug.Log(playerOneMoney);
+        moneyTextOne.text = "Cash: " + playerOneMoney.ToString("C", CultureInfo.CurrentCulture);
+        moneyTextTwo.text = "Mula: " + playerTwoMoney.ToString("C", CultureInfo.CreateSpecificCulture("en-GB"));
+    }
 
     public void PlayerTwoStart()
     {
