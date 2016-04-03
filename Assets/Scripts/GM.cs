@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class GM : MonoBehaviour
 {
-	bool playerTwoOn = false;
+    #region Variables
+    bool playerTwoOn = false;
 	bool levelEnd = false;
     [SerializeField]
 	int playerOneLives = 3;
@@ -17,15 +18,26 @@ public class GM : MonoBehaviour
 	public float playerTwoMoney = 0.00f;
 
 	public static GM instance = null;
-    public GameObject ScreenBorder;
-	public GameObject Player1;
-	public GameObject P1Camera;
-	public GameObject PlayerOneDead;
-	public GameObject Player2;
-    public GameObject PlayerTwo;
-	public GameObject P2Camera;
-	public GameObject PlayerTwoDead;
-    public GameObject PlayerTwoJoin;
+    [SerializeField]
+    GameObject ScreenBorder;
+    [SerializeField]
+    GameObject Player1;
+    [SerializeField]
+    GameObject P1Camera;
+    [SerializeField]
+    GameObject PlayerOneDead;
+    [SerializeField]
+    GameObject Player2;
+    [SerializeField]
+    GameObject PlayerTwo;
+    [SerializeField]
+    GameObject PlayerOne;
+    [SerializeField]
+    GameObject P2Camera;
+    [SerializeField]
+    GameObject PlayerTwoDead;
+    [SerializeField]
+    GameObject PlayerTwoJoin;
 
 
 	private GameObject clonePlayer1;
@@ -43,7 +55,7 @@ public class GM : MonoBehaviour
     Text moneyTextOne;
     [SerializeField]
     Text moneyTextTwo;
-
+    #endregion
 
     void Awake()
 	{
@@ -142,6 +154,7 @@ public class GM : MonoBehaviour
     public void PlayerTwoStart()
     {
         cloneCamera1.GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 1);
+        //PlayerOne.GetComponent<RectTransform>(). = 
         ScreenBorder.SetActive(true);
         PlayerTwo.SetActive(true);
         PlayerTwoJoin.SetActive(false);
